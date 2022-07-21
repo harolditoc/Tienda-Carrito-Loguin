@@ -1,19 +1,79 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
+    <title>{% block title %}!Bienvenidos¡{% endblock %}</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    <script src="https://kit.fontawesome.com/ac43f9efe1.js" crossorigin="anonymous"></script>
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {#
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}" /> #}
+    {% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+
+    {% block CSS %}{# Este bloque es para el css en cada pagina. #}{% endblock %}
+</head>
+
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="/">
+                <img width="80" height="64" role="img" src="https://i.imgur.com/SFZJ5hI.png">
+                ¡Cosmeticos Store!
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav me-2">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link active mx-2" aria-current="page">
+                            <img width="35" height="35" src="https://i.imgur.com/bTvW60I.png">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/productos" class="nav-link mx-2" aria-current="page">
+                            <img width="35" height="35" src="https://i.imgur.com/EL4ODx1.png">
+                            Productos
+                        </a>
+                    </li>
+                    {% if app.user %}
+                        <li class="nav-item">
+                            <a href="{{ path('app_logout') }}" class="nav-link mx-2" aria-current="page">
+                                <img width="35" height="35" src="https://i.imgur.com/GkH5MhJ.png">
+                                Cerrar Sesion
+                            </a>
+                        </li>
+                    {% elseif app.user == false %}
+                        <li class="nav-item">
+                            <a href="/registro" class="nav-link mx-2" aria-current="page">
+                                <img width="35" height="35" src="https://i.imgur.com/HssJTbZ.png">
+                                Registrarse
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/login" class="nav-link mx-2" aria-current="page">
+                                <img width="35" height="35" src="https://i.imgur.com/3nU3H3e.png">
+                                Iniciar Sesion
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% block body %}{% endblock %}
+</body>
+
 </html>

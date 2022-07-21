@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Persona
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="persona")
  * @ORM\Entity
  */
-class Persona
+class Persona implements UserInterface
 {
     /**
      * @var int
@@ -178,5 +179,26 @@ class Persona
         return $this;
     }
 
+    public function getUserIdentifier():string
+    {
+        return $this->email;
+    }
 
+    public function getRoles()
+    {
+        return ['ROLE_USER'];
+    }
+    public function getPassword():string
+    {
+        return $this->clave;
+    }
+    
+    public function getSalt(){}
+
+    public function eraseCredentials(){}
+
+    public function getUsername():string
+    {
+        return $this->nombre;
+    }
 }

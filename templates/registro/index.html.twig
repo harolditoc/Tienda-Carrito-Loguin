@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CS>>Registro{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('Exito') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {{ form(formulario) }}
+{% endblock %}

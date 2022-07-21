@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CS>>Productos{% endblock %}
+
+{% block CSS %}
+<link rel="stylesheet" href="{{ asset('css/productos.css') }}" />
+{% endblock %}
+
+{% block body %}
+{# <h1>Articulo index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Idarticulo</th>
+            <th>Nombre</th>
+            <th>Codigo</th>
+            <th>Stock</th>
+            <th>Descripcion</th>
+            <th>Imagen</th>
+            <th>Precio</th>
+            <th>Estado</th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for articulo in articulos %}
+        <tr>
+            <td>{{ articulo.idarticulo }}</td>
+            <td>{{ articulo.nombre }}</td>
+            <td>{{ articulo.codigo }}</td>
+            <td>{{ articulo.stock }}</td>
+            <td>{{ articulo.descripcion }}</td>
+            <td>{{ articulo.imagen }}</td>
+            <td>{{ articulo.precio }}</td>
+            <td>{{ articulo.estado }}</td>
+            <td>
+                <a href="{{ path('app_productos_show', {'idarticulo': articulo.idarticulo}) }}">show</a>
+                <a href="{{ path('app_productos_edit', {'idarticulo': articulo.idarticulo}) }}">edit</a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="9">no records found</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ path('app_productos_new') }}">Create new</a> #}
+{# <div class="cover d-flex justify-content-center align-items-center flex-column"
+    style="background-image: url(https://confilegal.com/wp-content/uploads/2021/07/comercio-electronico.jpg);">
+    <h1>Carrito</h1>
+    <p><i class="fas fa-cart-plus"></i></p>
+</div>
+<div class="container">
+    <div class="fondo-marca">
+        <div class="container cardshorizontal flex-column">
+            <div class="row mt-5 mb-5">
+                {% for articulo in articulos %}
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 product">
+                    <img class="cover-smallp col-12" src="{{ articulo.imagen }}" alt="">
+                    <h3 class="d-flex justify-content-center align-items-center mt-2">{{ articulo.nombre }}
+                    </h3>
+                    <span class="d-flex justify-content-center align-items-center mb-2">S/ {{ articulo.precio }}
+                    </span>
+                    <button class="btn btn-lg btn-secondary mt-2 col-12">Añadir al carrito <i
+                            class="fas fa-cart-plus"></i></button>
+                </div>
+                {% else %}
+                <p>No records found</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div> #}
+
+<div class="cover d-flex justify-content-center align-items-center flex-column"
+    style="background-image: url(https://confilegal.com/wp-content/uploads/2021/07/comercio-electronico.jpg);">
+    <h1>Carrito</h1>
+    <p><i class="fas fa-cart-plus"></i></p>
+</div>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-4 g-3 mt-2 mb-4">
+        {% for articulo in articulos %}
+        <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow product bg-light">
+                <img class="card-img-top cover-smallp" src="{{ articulo.imagen }}" alt="">
+                <div class="card-body">
+                    <span class="d-none d-flex d-sm-block card-title text product-name">{{ articulo.nombre }}
+                    </span>
+                    <span class="d-sm-none d-sm-block card-title text-mov product-name-mov">{{ articulo.nombre }}
+                    </span>
+                    <span class="card-text d-flex mx-auto d-block justify-content-center align-items-center mb-2">S/ {{
+                        articulo.precio}}
+                    </span>
+                    <button class="d-none d-flex d-sm-block btn btn-lg btn-secondary mt-2 col-12">Añadir al carrito <i
+                            class="fas fa-cart-plus"></i></button>
+                    <button class="d-sm-none btn btn-lg btn-secondary mt-2 col-12"><i
+                            class="fas fa-cart-plus"></i></button>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p>No records found</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

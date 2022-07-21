@@ -181,6 +181,4 @@ class Articulo
 
         return $this;
     }
-
-
 }

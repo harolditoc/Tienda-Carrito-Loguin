@@ -1,0 +1,102 @@
+.fondo-marca {
+    background: #f2f2f2;
+    min-height: 38vh;
+    /*espaciado de contenedor*/
+}
+
+.cardshorizontal {
+    display: flex;
+    /*card acoplada a imagen*/
+}
+
+.product {
+    border: 2px solid #ccc;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.24);
+}
+
+.cover-smallp {
+    /*tamaño de imagen*/
+    height: 200px;
+    /* width: 200px; */
+    background-blend-mode: normal;
+}
+
+.cover {
+    /*background: url("https://i.pinimg.com/736x/31/7d/be/317dbe2681d816e6a97565ac8c332a00.jpg") no-repeat;/*no se repite la imagen*/
+    height: 450px;
+    color: white;
+    background-image: url("http://greenandtrendy.com/wp-content/uploads/productos-toxicos-en-los-cosmeticos.jpg");
+    background-size: cover;
+    /*imagen completa en el contenedor*/
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: darken;
+    /*overflow: hidden;
+    height: 50vh;*/
+}
+
+.product-name {
+    /*limita el texto del nombre de articulo*/
+    color: #737373;
+    overflow: hidden;
+    display: -webkit-box;
+    /*coloca puntos suspensivos para que no sobrepase el texto*/
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    height: 45px;
+}
+
+.text {
+    /*limita el texto del nombre de articulo*/
+    font-size: 1.1rem !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 120% !important;
+}
+
+.product-name-mov {
+    /*limita el texto del nombre de articulo*/
+    color: #737373;
+    overflow: hidden;
+    display: -webkit-box;
+    /*coloca puntos suspensivos para que no sobrepase el texto*/
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    height: 47px;
+}
+.text-mov{
+    font-size: 0.8rem !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 120% !important;
+}
+/*PC*/
+@media (min-width: 1024px) {
+    .search-results-4-grid.jsx-4001457643 {
+        width: 25%;
+    }
+}
+
+.search-results-4-grid.jsx-4001457643 {
+    width: 50%;
+    padding-left: 10px;
+}
+/*MOVIL*/
+.search-results-2-grid.jsx-4001457643 {
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+.grid-pod.jsx-4001457643 {
+    margin-bottom: 10px;
+}
+
+@media (min-width: 0px) and (max-width: 1023px) {
+    .search-results-2-grid.jsx-4001457643:nth-child(2n + 1) {
+        padding-right: 5px;
+        padding-left: 10px;
+    }
+}
