@@ -10,20 +10,39 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
 #[Route('/productos')]
 class ProductosController extends AbstractController
 {
-    #[Route('/', name: 'app_productos_index', methods: ['GET'])]
-    public function index(EntityManagerInterface $entityManager): Response
+    #[Route('/', name: 'app_productos_index', methods: ['GET','POST'])]
+    public function index(EntityManagerInterface $entityManager, AuthenticationUtils $authenticationUtils): Response
     {
         $articulos = $entityManager
             ->getRepository(Articulo::class)
             ->findAll();
+            // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('productos/index.html.twig', [
             'articulos' => $articulos,
+            'last_username' => $lastUsername,
+            'error' => $error
         ]);
     }
+
+    // #[Route('/', name: 'app_productos_index', methods: ['GET'])]
+    // public function index(EntityManagerInterface $entityManager): Response
+    // {
+    //     $articulos = $entityManager
+    //         ->getRepository(Articulo::class)
+    //         ->findAll();
+    //     return $this->render('productos/index.html.twig', [
+    //         'articulos' => $articulos
+    //     ]);
+    // }
 
     #[Route('/new', name: 'app_productos_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response

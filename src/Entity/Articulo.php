@@ -50,6 +50,7 @@ class Articulo
      */
     private $descripcion;
 
+    
     /**
      * @var string
      *
@@ -180,5 +181,8 @@ class Articulo
         $this->categoriaIdcategoria = $categoriaIdcategoria;
 
         return $this;
+    }
+    public function __toString() {
+        return $this->idarticulo;
     }
 }

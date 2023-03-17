@@ -94,10 +94,18 @@
                     <span class="card-text d-flex mx-auto d-block justify-content-center align-items-center mb-2">S/ {{
                         articulo.precio}}
                     </span>
-                    <button class="d-none d-flex d-sm-block btn btn-lg btn-secondary mt-2 col-12">Añadir al carrito <i
+                    {% if app.user %}
+                    <button class="d-none d-flex d-sm-block btn btn-lg btn-secondary mt-2 col-12 text-decoration-none">Añadir al carrito <i
                             class="fas fa-cart-plus"></i></button>
-                    <button class="d-sm-none btn btn-lg btn-secondary mt-2 col-12"><i
+                    <button class="d-sm-none btn btn-lg btn-secondary mt-2 col-12 text-decoration-none"><i
                             class="fas fa-cart-plus"></i></button>
+                    {% elseif app.user == false %}
+                    <a href="/login"><button
+                            class="d-none d-flex d-sm-block btn btn-lg btn-secondary mt-2 col-12 text-decoration-none">Añadir al carrito <i
+                                class="fas fa-cart-plus"></i></button></a>
+                    <a href="/login"><button class="d-sm-none btn btn-lg btn-secondary mt-2 col-12 text-decoration-none"><i
+                                class="fas fa-cart-plus"></i></button></a>
+                    {% endif %}
                 </div>
             </div>
         </div>
